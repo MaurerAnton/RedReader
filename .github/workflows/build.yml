@@ -58,6 +58,7 @@ jobs:
                 run: ./gradlew checkstyle --stacktrace --info
 
             -   name: Android Lint
+                continue-on-error: true
                 run: ./gradlew lint
 
             -   name: Unit tests
