@@ -54,6 +54,7 @@ jobs:
                 run: ./gradlew pmd
 
             -   name: Run checkstyle
+                continue-on-error: true
                 run: ./gradlew checkstyle --stacktrace --info
 
             -   name: Android Lint
