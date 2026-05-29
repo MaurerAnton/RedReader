@@ -849,8 +849,8 @@ public class PostListingFragment extends RRFragment
 										if(postUrl != null) {
 
 										final String url
-												= postUrl.value
-												.toLowerCase();
+										= postUrl.value
+										.toLowerCase(Locale.US);
 
 											if(!url.contains(".jpg")
 													&& !url.contains(".jpeg")

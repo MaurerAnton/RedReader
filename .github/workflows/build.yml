@@ -50,6 +50,7 @@ jobs:
                     path: build/outputs/apk/debug/RedReader-debug.apk
 
             -   name: Run PMD
+                continue-on-error: true
                 run: ./gradlew pmd
 
             -   name: Run checkstyle

@@ -69,11 +69,7 @@ public final class OldRedditHtmlFetcher {
 	private static final String MARKER_DATA_LOCKED = "data-locked=\"";
 	private static final String MARKER_DATA_THUMBNAIL = "data-thumbnail=\"";
 	private static final String MARKER_DATA_LINK_FLAIR = "data-link-flair-text=\"";
-	private static final String MARKER_DATA_AUTHOR_FLAIR = "data-author-flair-text=\"";
-	private static final String MARKER_DATA_POST_HINT = "data-post-hint=\"";
-	private static final String MARKER_DATA_GALLERY = "data-is_gallery=\"";
 	private static final String MARKER_TITLE_A = "<a class=\"title";
-	private static final String MARKER_TAGLINE = "data-tagline=\"";
 	private static final String MARKER_SUBREDDIT_SEARCH_THING = "<div class=\"thing id-t5_";
 	private static final String MARKER_SUBREDDIT_TITLE_A = "class=\"title\"";
 	private static final String MARKER_SEARCH_RESULT = "<div class=\" search-result search-result-link";
@@ -178,16 +174,8 @@ public final class OldRedditHtmlFetcher {
 						"HTTP " + responseCode + " for " + uri.value);
 			}
 
-			final InputStream is = connection.getInputStream();
-
-			try {
+			try (InputStream is = connection.getInputStream()) {
 				return readStreamToString(is);
-			} finally {
-				try {
-					is.close();
-				} catch (final IOException e) {
-					Log.w(TAG, "Error closing stream", e);
-				}
 			}
 
 		} finally {
@@ -847,7 +835,7 @@ public final class OldRedditHtmlFetcher {
 	@NonNull
 	private static String unescapeHtml(@NonNull final String input) {
 
-		String result = input
+		final String result = input
 				.replace("&amp;", "&")
 				.replace("&lt;", "<")
 				.replace("&gt;", ">")
