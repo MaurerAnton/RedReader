@@ -848,9 +848,9 @@ public class PostListingFragment extends RRFragment
 										final UriString postUrl = parsedPost.getUrl();
 										if(postUrl != null) {
 
-											final String url
-													= postUrl.getDecoded()
-													.toLowerCase();
+										final String url
+												= postUrl.value
+												.toLowerCase();
 
 											if(!url.contains(".jpg")
 													&& !url.contains(".jpeg")
